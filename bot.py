@@ -32,7 +32,7 @@ async def on_ready():
 @bot.command()
 async def test(ctx):
 	embed = discord.Embed(colour = discord.Colour(0xA22121))
-	embed.set_author(name = TEST)
+	embed.set_author(name = "TEST")
 	embed.description = f"CECI EST UNE COMMANDE DE TEST"
 	embed.set_footer(text = "TEST")
 	await ctx.send(embed=embed)
