@@ -31,7 +31,7 @@ async def on_ready():
 
 @bot.command()
 async def test(ctx):
-	embed = discord.Embed(colour = discord.Colour(0xA22121))
+	embed = discord.Embed(colour = discord.Colour(0xC21C1C))
 	embed.set_author(name = "TEST")
 	embed.description = f"CECI EST UNE COMMANDE DE TEST"
 	embed.set_footer(text = "TEST")
