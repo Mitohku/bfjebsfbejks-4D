@@ -15,8 +15,8 @@ import aiohttp
 from collections                import Counter
 
 
-command_prefix = "s" #CHANGE IT TO WHAT YOU WANT
-description = "Say's own BOT" #ALSO CHANGE THIS
+command_prefix = "!" #CHANGE IT TO WHAT YOU WANT
+description = "Bot Privé de la 4ème Dimension" #ALSO CHANGE THIS
 bot = commands.Bot(command_prefix, description = description)
 bot.remove_command('help')
 tu = datetime.datetime.now()
