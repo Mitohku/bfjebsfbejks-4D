@@ -122,8 +122,8 @@ async def help(ctx):
     embed = discord.Embed(colour = discord.Colour(0xA522B3))
     embed.set_thumbnail(url = avi)
     embed.set_author(name = developer, url = "https://discord.gg/efF93Gz", icon_url = avi)
-    embed.description = f"Hi everyone!~♡ I'm **{developer.name}**, the creator of **Spirit | 精霊** <:bot:389862148395761664> \nI started making the bot in <:pythonbot:392172368023388160> and I'm also a web designer & designer. \nI wanted to make a BOT to know about how we do them \nbut also because my dream is to become **Discord Partner**."
-    embed.add_field(name="Having Issues/Problems?", value="If you have any problems with **Spirit | 精霊** <:bot:389862148395761664>,\nthen you can join us in our **[support server](https://discord.gg/efF93Gz)**, or visit our **[website](https://prestig-web.wixsite.com/spirit-bot)**!", inline=False)
+    embed.description = f"Tests pour le bot 4ème Dimension."
+    embed.add_field(name="Having Issues/Problems?", value="test", inline=False)
 
     help1 = discord.Embed(colour = discord.Colour(0xA522B3))
     help1.title = f"Spirit | 精霊  Commands List~♡"
