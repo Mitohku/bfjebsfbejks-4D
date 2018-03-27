@@ -42,6 +42,12 @@ async def staff(ctx):
 	embed1 = discord.Embed(colour = discord.Colour(0xC21C1C))
 	embed2 = discord.Embed(colour = discord.Colour(0xC21C1C))
 	embed3 = discord.Embed(colour = discord.Colour(0xC21C1C))
+	embed4 = discord.Embed(colour = discord.Colour(0xC21C1C))
+	embed5 = discord.Embed(colour = discord.Colour(0xC21C1C))
+	embed6 = discord.Embed(colour = discord.Colour(0xC21C1C))
+	embed7 = discord.Embed(colour = discord.Colour(0xC21C1C))
+	embed8 = discord.Embed(colour = discord.Colour(0xC21C1C))
+	embed9 = discord.Embed(colour = discord.Colour(0xC21C1C))
 	texte1 = "***/!\ ROLES & DESCRIPTION DU STAFF /!\***"
 	texte2 = "***/!\ ROLES & DESCRIPTION DU NOYAU DUR /!\***"
 	
