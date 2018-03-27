@@ -40,16 +40,14 @@ async def test(ctx):
 @bot.command(aliases = ['team'])
 async def staff(ctx):
 
-	if await ctx.bot.is_owner(ctx.author):
-		developer = bot.get_user(385419569558323202) # commands.get_user(commands.owner_id)
-		shutdown1 = discord.Embed(colour = discord.Colour(0xA522B3))
-		shutdown1.set_author(name='[SHUTDOWN]', url = "https://prestig-web.wixsite.com/spirit-bot")
-		shutdown1.description = f"**Spirit | 精霊** has been **Shutdown For Maintenance** by ***{developer.name}*** ! <:Maintenance:391999920229318668>"
-		shutdown1.set_footer(text = time.strftime("%d/%m/%Y - %I:%M:%S %p"))
+
+		text1 = discord.Embed(colour = discord.Colour(0xC21C1C))
+		text2 = discord.Embed(colour = discord.Colour(0xC21C1C))
+
+		await bot.add_reaction(message(ctx.author(bot)))
 		
-		await ctx.send(embed = shutdown1)
-		
-    else:
+
+
 		embed1 = discord.Embed(colour = discord.Colour(0xC21C1C))
 		embed2 = discord.Embed(colour = discord.Colour(0xC21C1C))
 		embed3 = discord.Embed(colour = discord.Colour(0xC21C1C))
