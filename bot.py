@@ -74,11 +74,11 @@ async def staff(ctx):
 	embed5.add_field(name="Description", value= f"- **__Rôle Principal:__** ???\n- **__Les attentes:__** Ils encadrent les **Modérateurs**, les **Animateurs**/**Helpers** et les **Foreigners** de manière technique et relationnelle.\n- **__Droits:__** mute/unmute sur les salons vocaux, ajouts de rôles *(**+18 NSFW**)*, expulser/bannir un membre.", inline=False)
 	embed5.set_footer(text = "| ©  Say' 1-(5/5)")
 	
-	await ctx.send(embed1)
-	await ctx.send(embed2)
-	await ctx.send(embed3)
-	await ctx.send(embed4)
-	await ctx.send(embed5)
+	await ctx.send(embed = embed1)
+	await ctx.send(embed = embed2)
+	await ctx.send(embed = embed3)
+	await ctx.send(embed = embed4)
+	await ctx.send(embed = embed5)
 	
 	
 	await ctx.send(texte2)
@@ -95,10 +95,10 @@ async def staff(ctx):
 	embed9.add_field(name="???", value= f"Gère la planification des évènements, les réseaux sociaux, le règlement. (back-up Fondatrice).", inline=False)
 	embed9.set_footer(text = "| ©  Say' 2-(4/4)")
 	
-	await ctx.send(embed6)
-	await ctx.send(embed7)
-	await ctx.send(embed8)
-	await ctx.send(embed9)
+	await ctx.send(embed = embed6)
+	await ctx.send(embed = embed7)
+	await ctx.send(embed = embed8)
+	await ctx.send(embed = embed9)
 
 
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
