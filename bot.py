@@ -73,23 +73,3 @@ async def staff(ctx):
 	await ctx.send(embed3)
 	await ctx.send(embed4)
 	await ctx.send(embed5)
-	
-	
-	await ctx.send(texte2)
-	embed6.set_author(name = "Cancer")
-	embed6.add_field(name="???", value= f"Gère la zone vocal du serveur", inline=False)
-	embed6.set_footer(text = "| ©  Say' 2-(1/4)")
-	embed7.set_author(name = "Skippy")
-	embed7.add_field(name="???", value= f"Valide  les recrutements (candidatures / évolutions rôles)  du staff.", inline=False)
-	embed7.set_footer(text = "| ©  Say' 2-(2/4)")
-	embed8.set_author(name = "NONOXX")
-	embed8.add_field(name="???", value= f"Gère tout ce qui est interface graphique du serveur (logos/emojis/etc..)", inline=False)
-	embed8.set_footer(text = "| ©  Say' 2-(3/4)")
-	embed9.set_author(name = "Ashley")
-	embed9.add_field(name="???", value= f"Gère la planification des évènements, les réseaux sociaux, le règlement. (back-up Fondatrice).", inline=False)
-	embed9.set_footer(text = "| ©  Say' 2-(4/4)")
-	
-	await ctx.send(embed6)
-	await ctx.send(embed7)
-	await ctx.send(embed8)
-	await ctx.send(embed9)
