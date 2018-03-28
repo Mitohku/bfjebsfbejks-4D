@@ -168,27 +168,27 @@ async def anniv(ctx, *, member: discord.Member = None):
 		return
 
 @bot.group()
-async def afk(self):
+async def game(self):
 
-	if afk == None:
+	if game == None:
 		await self.send(f"Merci d'utiliser un des paramètres: `on`, `off`")
 
-@afk.command()
-async def afk_on(self, *, afk = None):
+@game.command()
+async def game_on(self, *, game = None):
 	author = ctx.message.author.mention
 
-	if not afk:
+	if not game:
 		await self.send(f"Merci de mettre une raison!")
 	else:
 		embed1 = discord.Embed(colour = discord.Colour(0xC21C1C))
-		embed1.description = f"{author} est désormais AFK pour **{afk}** !"
+		embed1.description = f"{author} est désormais AFK pour **{game}** !"
 		embed1.set_footer(text = "| ©  Say'")
 
-@afk.command()
-async def afk_off(self, *, afk = None):
+@game.command()
+async def game_off(self, *, game = None):
 	author = ctx.message.author.mention
 
-	if not afk:
+	if not game:
 		embed2 = discord.Embed(colour = discord.Colour(0xC21C1C))
 		embed2.description = f"{author} n'est plus AFK !"
 		embed2.set_footer(text = "| ©  Say'")
