@@ -44,7 +44,7 @@ async def staff(ctx):
 		text1 = discord.Embed(colour = discord.Colour(0xC21C1C))
 		text2 = discord.Embed(colour = discord.Colour(0xC21C1C))
 
-		await bot.add_reaction(message(ctx.author(bot)))
+		await ctx.add_reaction(message(ctx.author(bot)))
 		
 
 
