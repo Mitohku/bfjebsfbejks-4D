@@ -124,7 +124,42 @@ async def staff(ctx):
 		await ctx.message.delete()
 	except:
 		pass
-		
+
+@bot.command(aliases = ['purge', 'clear', 'cc'])
+async def clearchat(ctx, limit: int):
+	await ctx.bot.purge_from(ctx.message.channel, limit=limit)
+	msg = "🗑 {} a clear **{}** messages dans *{}*".format(ctx.message.author.mention, limit, ctx.message.channel.mention)
+	await ctx.send(ctx.bot.modlogs_channel, msg)
+	await ctx.send("💢 Vous n'avez pas la permission de faire cette commande")
+
+@bot.command()
+async def mute(ctx, user, *, reason=""):
+	mention = member.mention
+	await ctx.add_restriction(member, "Mute")
+	await ctx.bot.add_roles(member, ctx.bot.muted_role)
+	msg_user = "Vous êtes désormais mute!"
+	if reason != "":
+		msg_user += " La raison de votre mute est: " + reason
+	try:
+		await ctx.send(member, msg_user)
+	except discord.errors.Forbidden:
+		pass  # don't fail in case user has DMs disabled for this server, or blocked the bot
+		await ctx.send("{} est désormais mute".format(member.mention))
+		msg = "🔇 {} a mute {} | {}#{}".format(ctx.message.author.mention, member.mention, ctx.bot.escape_name(member.name), ctx.bot.escape_name(member.discriminator))
+		if reason != "":
+			msg += "\n✏️ **__Raison:__** " + reason
+		else:
+			msg += "\nMerci d'utiliser le format `!mute <membre> [raison]` car la raison est directement envoyée au membre"
+			await ctx.send(ctx.bot.modlogs_channel, msg)
+			if member.id in ctx.bot.timemutes:
+			ctx.bot.timemutes.pop(member.id)
+			with open("data/timemutes.json", "r") as f:
+				timemutes = json.load(f)
+				timemutes.pop(member.id)
+				with open("data/timemutes.json", "w") as f:
+					json.dump(timemutes, f)
+			await ctx.send("💢 Vous n'avez pas la permission de faire cette commande")
+
 
 
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
