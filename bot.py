@@ -13,9 +13,6 @@ import logging
 import traceback
 import aiohttp
 from collections                import Counter
-import strawpoll
-import config
-import requests
 
 
 command_prefix = "!" 
@@ -44,50 +41,6 @@ async def on_message(message):
         await message.channel.send(pollURL)
     else:
         await bot.process_commands(message)
-
-async def createStrawpoll(message):
-    #gets the title of the poll
-    first = message.find("{") + 1
-    second = message.find("}")
-    title = message[first:second]
-
-    #gets the # of options and assigns them to an array
-    newMessage = message[second:]
-    loopTime = 0
-
-    option = []
-    for options in message:
-        #get from } [option 1]
-        #if newThis == -1:
-        stillOptions = newMessage.find("[")
-        if stillOptions != -1:
-            if loopTime == 0:
-                first = newMessage.find("[") + 1
-
-                second = newMessage.find("]")
-                second1 = second + 1
-                option.append(newMessage[first:second])
-
-                loopTime+=1
-            else:
-                newMessage = newMessage[second1:]
-                first = newMessage.find("[") + 1
-                second = newMessage.find("]")
-                second1 = second + 1
-                option.append(newMessage[first:second])
-                loopTime+=1
-    strawpollAPI = strawpoll.API()
-    try:
-        r = requests.post('https://www.strawpoll.me/api/v2/polls', json = {"title": title, "options": option[:(len(option)-1)], "multi": "true"}, headers={"Content Type": "application/json"})
-        json = r.json()
-        return "https://strawpoll.me/" + str(json["id"])
-
-
-    except strawpoll.errors.HTTPException:
-        return "Merci de vérifier que vous utilisez le format `!strawpoll {title} [Option1] [Option2] [Option 3]`"
-
-    except KeyError:
-        return "Merci de vérifier que vous utilisez le format `!strawpoll {title} [Option1] [Option2] [Option 3]`"
 
 		
 @bot.command()
