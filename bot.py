@@ -71,6 +71,7 @@ async def test(ctx):
 	embed.set_author(name = "TEST")
 	embed.description = f"CECI EST UNE COMMANDE DE TEST"
 	embed.set_footer(text = "TEST")
+	choices = [(to_emoji(e), v) for e, v in enumerate(questions_and_choices[1:])]
 	poll = await ctx.send(embed = embed)
 	for emoji, _ in choices:
 		await poll.add_reaction(emoji)
