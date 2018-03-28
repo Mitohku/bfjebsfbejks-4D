@@ -68,8 +68,8 @@ async def staff(ctx):
 	embed7 = discord.Embed(colour = discord.Colour(0xC21C1C))
 	embed8 = discord.Embed(colour = discord.Colour(0xC21C1C))
 	embed9 = discord.Embed(colour = discord.Colour(0xC21C1C))
-	texte1 = "***/!\ ROLES & DESCRIPTION DU STAFF /!\***"
-	texte2 = "***/!\ ROLES & DESCRIPTION DU NOYAU DUR /!\***"
+	texte1 = "ㅤ\nㅤ\n***/!\ ROLES & DESCRIPTION DU STAFF /!\***\nㅤ"
+	texte2 = "ㅤ\nㅤ\n***/!\ ROLES & DESCRIPTION DU NOYAU DUR /!\***\nㅤ"
 	
 
 	await ctx.send(texte1)
