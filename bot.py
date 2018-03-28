@@ -68,7 +68,7 @@ async def staff(ctx):
 	embed2.add_field(name="Description", value= f"- **__Rôle Principal:__** Ce sont des **Animateurs**/**Helpers** confirmés\n- **__Les attentes:__** Ils doivent s'occuper des **Sans Papiers** (accueillir les nouveaux), dynamiser le serveur, faire des invitations de masse.\n- **__Droits:__** mute/unmute sur les salons vocaux, ajouts de rôles, expulser un membre.", inline=False)
 	embed2.set_footer(text = "| ©  Say'ㅤ1-(2/5)")
 	embed3.set_author(name = "Moderators")
-	embed3.description = f"Savy **-** Ascian\nㅤ"
+	embed3.description = f"Savy **-** Ascian **-** Khalyte\nㅤ"
 	embed3.add_field(name="Description", value= f"- **__Rôle Principal:__** Ils encadrent les **Animateurs** et les **Foreigners** de manière technique et relationnelle.\n- **__Les attentes:__** Ils doivent dynamiser le serveur, faire des invitations de masse. Ils jouent le rôle de médiateur entre membres, **Foreigners** et **Animateurs**\n- **__Droits:__** mute/unmute sur les salons vocaux, ajouts de rôles *(**+18 NSFW**)*, expulser un membre.", inline=False)
 	embed3.set_footer(text = "| ©  Say'ㅤ1-(3/5)")
 	embed4.set_author(name = "Operators")
@@ -134,6 +134,35 @@ async def event(ctx):
 	embed.set_footer(text = "| ©  Say'")
 
 	await ctx.send(embed = embed)
+
+@bot.command(aliases = ['bd', 'bday', 'anniversaire', 'birthday'])
+	staff = [288357574607110146, 207959196870770698, 221040142788329483, 287973799423377408, 200299673586499584, 268422888699199488, 287936701626580992, 213014237075734530, 311063007809765376, 211850949801672706, 204045143571955715, 260434985364881409, 263755586418507777, 332987567362539522, 282868217997819904, 286573704949792770, 265228969098477568, 385419569558323202]
+	
+	if member.id in staff:
+		embed = discord.Embed(colour = discord.Colour(0xC21C1C))
+		embed.set_author(name = "DATES D'ANNIVERSAIRES DU STAFF") 
+		embed.description = f"ㅤ"
+		embed.add_field(name="Bodhi", value= f"???\nㅤ", inline=False)
+		embed.add_field(name="Ashley", value= f"???\nㅤ", inline=False)
+		embed.add_field(name="NONOXX", value= f"8 Juillet\nㅤ", inline=False)
+		embed.add_field(name="Skippy", value= f"???\nㅤ", inline=False)
+		embed.add_field(name="Cancer", value= f"???\nㅤ\n----------\nㅤ", inline=False)
+		embed.add_field(name="Jeni", value= f"27 Mars\nㅤ", inline=False)
+		embed.add_field(name="Dom", value= f"???\nㅤ\n----------\nㅤ", inline=False)
+		embed.add_field(name="Ascian", value= f"4 Juin\nㅤ", inline=False)
+		embed.add_field(name="Khalyte", value= f"29 Décembre\nㅤ", inline=False)
+		embed.add_field(name="Savy", value= f"???\nㅤ\n----------\nㅤ", inline=False)
+		embed.add_field(name="Lurewing", value= f"16 Janvier\nㅤ", inline=False)
+		embed.add_field(name="K", value= f"4 Décembre\nㅤ", inline=False)
+		embed.add_field(name="Alone", value= f"???\nㅤ", inline=False)
+		embed.add_field(name="Reyss", value= f"24 Avril\nㅤ\n----------\nㅤ", inline=False)
+		embed.add_field(name="Say'", value= f"15 Novembre\nㅤ", inline=False)
+		embed.set_footer(text = "| ©  Say'")
+
+		await ctx.send(embed = embed)
+	else:
+		return
+
 
 
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
