@@ -21,10 +21,6 @@ bot = commands.Bot(command_prefix, description = description)
 bot.remove_command('help')
 tu = datetime.datetime.now()
 
-def to_emoji(c):
-    base = 0x1f1e6
-    return chr(base + c)
-
 @bot.event
 async def on_ready():
     print('Logged in as')
@@ -131,6 +127,8 @@ async def radio(ctx):
 	embed.set_author(name = "FirstStation")
 	embed.description = f"Vous vous ennuyez? Vous voulez juste écouter de la musique? Ecoutez FirstStation en direct!\n\n**__http://firststation.fr/__**"
 	embed.set_footer(text = "| © FirstStation")
+
+	await ctx.send(embed = embed)
 
 
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
