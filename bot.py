@@ -64,15 +64,16 @@ async def poll(ctx, *questions_and_choices: str):
     #poll = await ctx.send(f'{ctx.author} asks: {question}\n\n{body}')
     for emoji, _ in choices:
         await poll.add_reaction(emoji)
-
-
+		
 @bot.command()
 async def test(ctx):
 	embed = discord.Embed(colour = discord.Colour(0xC21C1C))
 	embed.set_author(name = "TEST")
 	embed.description = f"CECI EST UNE COMMANDE DE TEST"
 	embed.set_footer(text = "TEST")
-	await ctx.send(embed=embed)
+    poll = await ctx.send(embed = embed)
+	for emoji, _ in choices:
+		await poll.add_reaction(emoji)
 
 @bot.command(aliases = ['team'])
 async def staff(ctx):
