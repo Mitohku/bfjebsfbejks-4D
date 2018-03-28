@@ -174,18 +174,18 @@ async def afk(self):
 		await self.send(f"Merci d'utiliser un des paramètres: `on`, `off`")
 
 @afk.command()
-async def afk_on(self, *, game = None):
+async def afk_on(self, *, afk = None):
 	author = ctx.message.author.mention
 
 	if not afk:
 		await self.send(f"Merci de mettre une raison!")
 	else:
 		embed1 = discord.Embed(colour = discord.Colour(0xC21C1C))
-		embed1.description = f"{author} est désormais AFK pour **{game}** !"
+		embed1.description = f"{author} est désormais AFK pour **{afk}** !"
 		embed1.set_footer(text = "| ©  Say'")
 
 @afk.command()
-async def afk_off(self, *, game = None):
+async def afk_off(self, *, afk = None):
 	author = ctx.message.author.mention
 
 	if not afk:
