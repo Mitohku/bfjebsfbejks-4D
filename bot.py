@@ -71,7 +71,7 @@ async def test(ctx):
 	embed.set_author(name = "TEST")
 	embed.description = f"CECI EST UNE COMMANDE DE TEST"
 	embed.set_footer(text = "TEST")
-    poll = await ctx.send(embed = embed)
+	poll = await ctx.send(embed = embed)
 	for emoji, _ in choices:
 		await poll.add_reaction(emoji)
 
