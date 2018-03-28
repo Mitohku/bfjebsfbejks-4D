@@ -21,6 +21,10 @@ bot = commands.Bot(command_prefix, description = description)
 bot.remove_command('help')
 tu = datetime.datetime.now()
 
+def to_emoji(c):
+    base = 0x1f1e6
+    return chr(base + c)
+
 @bot.event
 async def on_ready():
     print('Logged in as')
@@ -28,31 +32,40 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
-@bot.command()
-async def quickpoll(ctx, question, *options: str):
-        if len(options) <= 1:
-            await ctx.send('You need more than one option to make a poll!')
-            return
-        if len(options) > 10:
-            await ctx.send('You cannot make a poll for more than 10 things!')
-            return
+@commands.command()
+async def poll(self, ctx, *questions_and_choices: str):
+    """Makes a poll quickly.
+    The first argument is the question and the rest are the choices.
+    """
 
-        if len(options) == 2 and options[0] == 'yes' and options[1] == 'no':
-            reactions = ['✅', '❌']
-        else:
-            reactions = ['1⃣', '2⃣', '3⃣', '4⃣', '5⃣', '6⃣', '7⃣', '8⃣', '9⃣', '🔟']
+    if len(questions_and_choices) < 3:
+        return await ctx.send('Need at least 1 question with 2 choices.')
+    elif len(questions_and_choices) > 21:
+        return await ctx.send('You can only have up to 20 choices.')
 
-        description = []
-        for x, option in enumerate(options):
-            description += '\n {} {}'.format(reactions[x], option)
-        embed = discord.Embed(title=question, description=''.join(description))
-        react_message = await ctx.send(embed=embed)
-        for reaction in reactions[:len(options)]:
-            await ctx.reaction.emoji(react_message, reaction)
-        embed.set_footer(text='Poll ID: {}'.format(react_message.id))
-        await ctx.bot.edit_message(react_message, embed=embed)
+    perms = ctx.channel.permissions_for(ctx.me)
+    if not (perms.read_message_history or perms.add_reactions):
+        return await ctx.send('Need Read Message History and Add Reactions permissions.')
 
-		
+    question = questions_and_choices[0]
+    choices = [(to_emoji(e), v) for e, v in enumerate(questions_and_choices[1:])]
+
+    try:
+        await ctx.message.delete()
+    except:
+        pass
+
+    body = "\n".join(f"{key}: {c}" for key, c in choices)
+    embed = discord.Embed(title = f"**{ctx.author.name}** asks: ", description = f"{question}", color = embed_color)
+    embed.add_field(name = "Answers:", value = f"{body}")
+    embed.set_thumbnail(url = ctx.author.avatar_url)
+    poll = await ctx.send(embed = embed)
+
+    #poll = await ctx.send(f'{ctx.author} asks: {question}\n\n{body}')
+    for emoji, _ in choices:
+        await poll.add_reaction(emoji)
+
+
 @bot.command()
 async def test(ctx):
 	embed = discord.Embed(colour = discord.Colour(0xC21C1C))
@@ -68,7 +81,7 @@ async def staff(ctx):
 		text1 = discord.Embed(colour = discord.Colour(0xC21C1C))
 		text2 = discord.Embed(colour = discord.Colour(0xC21C1C))
 
-		await add_reaction(message(ctx.author(bot)))
+		await reaction_add(message(ctx.author(bot)))
 		
 
 
