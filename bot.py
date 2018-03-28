@@ -32,8 +32,8 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
-@commands.command()
-async def poll(self, ctx, *questions_and_choices: str):
+@bot.command()
+async def poll(ctx, *questions_and_choices: str):
     """Makes a poll quickly.
     The first argument is the question and the rest are the choices.
     """
