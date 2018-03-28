@@ -125,12 +125,24 @@ async def staff(ctx):
 	except:
 		pass
 
-@bot.command(aliases = ['purge', 'clear', 'cc'])
-async def clearchat(ctx, limit: int):
-	await ctx.bot.purge_from(ctx.message.channel, limit=limit)
-	msg = "🗑 {} a clear **{}** messages dans *{}*".format(ctx.message.author.mention, limit, ctx.message.channel.mention)
-	await ctx.send(msg)
-	await ctx.send("💢 Vous n'avez pas la permission de faire cette commande")
+
+@bot.command(aliases=['purge', 'clear', 'cc'])
+async def clearchat(ctx, number):
+	number = int(number)
+		if number > 99 or number < 1:
+			 await ctx.send("Je ne peux supprimer que jusqu'à 99 messages", delete_after=10)
+		else:
+			author = ctx.message.author
+			authorID = author.id
+			mgs = []
+			number = int(number)
+			channel = ctx.message.channel
+			async for x in bot.logs_from((channel), limit = int(number+1)):
+				mgs.append(x)
+				await delete_messages(mgs)
+				msg = "🗑 {} a clear **{}** messages dans *{}*".format(ctx.message.author.mention, number, ctx.message.channel.mention)
+				await ctx.send(msg, delete_after=4)
+				await ctx.send("💢 Vous n'avez pas la permission de faire cette commande")
 
 
 
