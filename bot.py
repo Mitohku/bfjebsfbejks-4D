@@ -32,20 +32,16 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
-@bot.command()
-async def poll(ctx, *questions_and_choices: str):
-    """Makes a poll quickly.
-    The first argument is the question and the rest are the choices.
-    """
-
+@bot.command(aliases = ['poll'])
+async def sondage(ctx, *questions_and_choices: str):
     if len(questions_and_choices) < 3:
-        return await ctx.send('Need at least 1 question with 2 choices.')
+        return await ctx.send('Il est nécessaire de donner au moins 1 question et 2 choix.')
     elif len(questions_and_choices) > 21:
-        return await ctx.send('You can only have up to 20 choices.')
+        return await ctx.send('Vous ne pouvez mettre que 20 choix.')
 
     perms = ctx.channel.permissions_for(ctx.me)
     if not (perms.read_message_history or perms.add_reactions):
-        return await ctx.send('Need Read Message History and Add Reactions permissions.')
+        return await ctx.send("Je n'ai pas la/les permission(s) **Read Message History** et/ou **Add Reactions**.")
 
     question = questions_and_choices[0]
     choices = [(to_emoji(e), v) for e, v in enumerate(questions_and_choices[1:])]
@@ -56,8 +52,8 @@ async def poll(ctx, *questions_and_choices: str):
         pass
 
     body = "\n".join(f"{key}: {c}" for key, c in choices)
-    embed = discord.Embed(title = f"**{ctx.author.name}** asks: ", description = f"{question}", color = discord.Colour(0xC21C1C))
-    embed.add_field(name = "Answers:", value = f"{body}")
+    embed = discord.Embed(title = f"**{ctx.author.name}** vous demandes: ", description = f"{question}", color = discord.Colour(0xC21C1C))
+    embed.add_field(name = "Réponses:", value = f"{body}")
     embed.set_thumbnail(url = ctx.author.avatar_url)
     poll = await ctx.send(embed = embed)
 
@@ -66,15 +62,11 @@ async def poll(ctx, *questions_and_choices: str):
         await poll.add_reaction(emoji)
 		
 @bot.command()
-async def test(ctx, *questions_and_choices: str):
+async def test(ctx):
 	embed = discord.Embed(colour = discord.Colour(0xC21C1C))
 	embed.set_author(name = "TEST")
 	embed.description = f"CECI EST UNE COMMANDE DE TEST"
 	embed.set_footer(text = "TEST")
-	choices = [(to_emoji(e), v) for e, v in enumerate(questions_and_choices[1:])]
-	poll = await ctx.send(embed = embed)
-	for emoji, _ in choices:
-		await poll.add_reaction(emoji)
 
 @bot.command(aliases = ['team'])
 async def staff(ctx):
