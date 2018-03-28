@@ -114,7 +114,7 @@ async def staff(ctx):
 @bot.command()
 async def radio(ctx):
 	embed = discord.Embed(colour = discord.Colour(0xC21C1C))
-	embed.set_author(name = "FirstStationㅤ-ㅤUne Nouvelle WebRadio") 
+	embed.set_author(name = "FirstStation - Une Nouvelle WebRadio") 
 	embed.description = f"Vous vous ennuyez? Vous voulez juste écouter de la musique?\nEcoutez **FirstStation** en direct!\n\n**__http://firststation.fr/__**\nㅤ"
 	embed.set_footer(text = "| © FirstStation")
 
