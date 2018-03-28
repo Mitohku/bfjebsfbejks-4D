@@ -13,6 +13,9 @@ import logging
 import traceback
 import aiohttp
 from collections                import Counter
+import strawpoll
+import config
+import requests
 
 
 command_prefix = "!" 
@@ -32,34 +35,60 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
-@bot.command(aliases = ['poll'])
-async def sondage(ctx, *questions_and_choices: str):
-    if len(questions_and_choices) < 3:
-        return await ctx.send('Il est nécessaire de donner au moins 1 question et 2 choix.')
-    elif len(questions_and_choices) > 21:
-        return await ctx.send('Vous ne pouvez mettre que 20 choix.')
+@bot.event
+async def on_message(message):
+    command_name = bot.command_prefix + 'strawpoll'
+    messageContent = message.content
+    if message.content.startswith(command_name):
+        pollURL = await createStrawpoll(messageContent)
+        await message.channel.send(pollURL)
+    else:
+        await bot.process_commands(message)
 
-    perms = ctx.channel.permissions_for(ctx.me)
-    if not (perms.read_message_history or perms.add_reactions):
-        return await ctx.send("Je n'ai pas la/les permission(s) **Read Message History** et/ou **Add Reactions**.")
+async def createStrawpoll(message):
+    #gets the title of the poll
+    first = message.find("{") + 1
+    second = message.find("}")
+    title = message[first:second]
 
-    question = questions_and_choices[0]
-    choices = [(to_emoji(e), v) for e, v in enumerate(questions_and_choices[1:])]
+    #gets the # of options and assigns them to an array
+    newMessage = message[second:]
+    loopTime = 0
 
+    option = []
+    for options in message:
+        #get from } [option 1]
+        #if newThis == -1:
+        stillOptions = newMessage.find("[")
+        if stillOptions != -1:
+            if loopTime == 0:
+                first = newMessage.find("[") + 1
+
+                second = newMessage.find("]")
+                second1 = second + 1
+                option.append(newMessage[first:second])
+
+                loopTime+=1
+            else:
+                newMessage = newMessage[second1:]
+                first = newMessage.find("[") + 1
+                second = newMessage.find("]")
+                second1 = second + 1
+                option.append(newMessage[first:second])
+                loopTime+=1
+    strawpollAPI = strawpoll.API()
     try:
-        await ctx.message.delete()
-    except:
-        pass
+        r = requests.post('https://www.strawpoll.me/api/v2/polls', json = {"title": title, "options": option[:(len(option)-1)], "multi": "true"}, headers={"Content Type": "application/json"})
+        json = r.json()
+        return "https://strawpoll.me/" + str(json["id"])
 
-    body = "\n".join(f"{key}: {c}" for key, c in choices)
-    embed = discord.Embed(title = f"**{ctx.author.name}** vous demandes: ", description = f"{question}", color = discord.Colour(0xC21C1C))
-    embed.add_field(name = "Réponses:", value = f"{body}")
-    embed.set_thumbnail(url = ctx.author.avatar_url)
-    poll = await ctx.send(embed = embed)
 
-    #poll = await ctx.send(f'{ctx.author} asks: {question}\n\n{body}')
-    for emoji, _ in choices:
-        await poll.add_reaction(emoji)
+    except strawpoll.errors.HTTPException:
+        return "Merci de vérifier que vous utilisez le format `!strawpoll {title} [Option1] [Option2] [Option 3]`"
+
+    except KeyError:
+        return "Merci de vérifier que vous utilisez le format `!strawpoll {title} [Option1] [Option2] [Option 3]`"
+
 		
 @bot.command()
 async def test(ctx):
