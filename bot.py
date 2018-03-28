@@ -56,7 +56,7 @@ async def poll(ctx, *questions_and_choices: str):
         pass
 
     body = "\n".join(f"{key}: {c}" for key, c in choices)
-    embed = discord.Embed(title = f"**{ctx.author.name}** asks: ", description = f"{question}", color = embed_color)
+    embed = discord.Embed(title = f"**{ctx.author.name}** asks: ", description = f"{question}", color = discord.Colour(0xC21C1C))
     embed.add_field(name = "Answers:", value = f"{body}")
     embed.set_thumbnail(url = ctx.author.avatar_url)
     poll = await ctx.send(embed = embed)
