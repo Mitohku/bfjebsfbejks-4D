@@ -69,9 +69,6 @@ async def test(ctx):
 	embed.set_footer(text = "TEST")
 
 	await ctx.send(embed = embed)
-	await ctx.message(embed).add_reaction('👍')
-	await ctx.message(embed).add_reaction('👎')
-	await ctx.message(embed).add_reaction('🤷')
 
 	try:
 		await ctx.message.delete()
