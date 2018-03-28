@@ -66,11 +66,12 @@ async def poll(ctx, *questions_and_choices: str):
         await poll.add_reaction(emoji)
 		
 @bot.command()
-async def test(ctx):
+async def test(ctx, *questions_and_choices: str):
 	embed = discord.Embed(colour = discord.Colour(0xC21C1C))
 	embed.set_author(name = "TEST")
 	embed.description = f"CECI EST UNE COMMANDE DE TEST"
 	embed.set_footer(text = "TEST")
+	question = questions_and_choices[0]
 	choices = [(to_emoji(e), v) for e, v in enumerate(questions_and_choices[1:])]
 	poll = await ctx.send(embed = embed)
 	for emoji, _ in choices:
