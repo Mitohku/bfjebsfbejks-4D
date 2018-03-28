@@ -70,15 +70,6 @@ async def test(ctx):
 
 @bot.command(aliases = ['team'])
 async def staff(ctx):
-
-
-		text1 = discord.Embed(colour = discord.Colour(0xC21C1C))
-		text2 = discord.Embed(colour = discord.Colour(0xC21C1C))
-
-		await reaction_add(message(ctx.author(bot)))
-		
-
-
 		embed1 = discord.Embed(colour = discord.Colour(0xC21C1C))
 		embed2 = discord.Embed(colour = discord.Colour(0xC21C1C))
 		embed3 = discord.Embed(colour = discord.Colour(0xC21C1C))
