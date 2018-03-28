@@ -48,7 +48,7 @@ async def quickpoll(ctx, question, *options: str):
         embed = discord.Embed(title=question, description=''.join(description))
         react_message = await ctx.send(embed=embed)
         for reaction in reactions[:len(options)]:
-            await ctx.reaction_add(react_message, reaction)
+            await reaction_add(react_message, reaction)
         embed.set_footer(text='Poll ID: {}'.format(react_message.id))
         await ctx.bot.edit_message(react_message, embed=embed)
 
@@ -68,7 +68,7 @@ async def staff(ctx):
 		text1 = discord.Embed(colour = discord.Colour(0xC21C1C))
 		text2 = discord.Embed(colour = discord.Colour(0xC21C1C))
 
-		await bot.add_reaction(message(ctx.author(bot)))
+		await add_reaction(message(ctx.author(bot)))
 		
 
 
