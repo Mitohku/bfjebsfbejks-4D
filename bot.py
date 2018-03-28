@@ -116,7 +116,21 @@ async def radio(ctx):
 	embed = discord.Embed(colour = discord.Colour(0xC21C1C))
 	embed.set_author(name = "FirstStation - Une Nouvelle WebRadio") 
 	embed.description = f"Vous vous ennuyez? Vous voulez juste écouter de la musique?\nEcoutez **FirstStation** en direct!\n\n**__http://firststation.fr/__**\nㅤ"
-	embed.set_footer(text = "| © FirstStation")
+	embed.set_footer(text = "| ©  FirstStation")
+
+	await ctx.send(embed = embed)
+
+@bot.command(aliases = ['anim', 'animation', 'evenement'])
+async def event(ctx):
+	karaoke = channel.name(315219359368740875)
+	imitation = channel.name(403801761787281409)
+
+	embed = discord.Embed(colour = discord.Colour(0xC21C1C))
+	embed.set_author(name = "PLANIFICATION DES EVENEMENTS") 
+	embed.add_field(name="Gaming'Actu", value= f"Samedi 31 Mars, 17h-18h, **(FirstStation)**\n*Animé par @Say'  [ Hypesia.net ]#9257*", inline=False)
+	embed.add_field(name="Karaoké", value= f"Tous les Samedis, 21h, **({karaoke})**\n*Animé par @Shi ~#9262, @יRεγss ღ#4081, @Alone#5902*", inline=False)
+	embed.add_field(name="Imitations Vocales", value= f"Dimanche 25 Mars, 21h, **({imitation})**\n*Animé par @J.Ɛ.Ɲ.I.#7795, @Ashley#4026*", inline=False)
+	embed.set_footer(text = "| ©  Say'")
 
 	await ctx.send(embed = embed)
 
