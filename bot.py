@@ -167,6 +167,35 @@ async def anniv(ctx, *, member: discord.Member = None):
 	else:
 		return
 
+@bot.group()
+async def afk(self, *, text):
+
+	if afk == None:
+		await self.send(f"Merci d'utiliser un des paramètres: `on`, `off`")
+
+@afk.command()
+async def afk_on(self, *, text):
+	raison = text
+	author = ctx.message.author.mention
+
+	if not afk:
+		await self.send(f"Merci de mettre une raison!")
+	else:
+		embed1 = discord.Embed(colour = discord.Colour(0xC21C1C))
+		embed1.description = f"{author} est désormais AFK pour **{raison}** !"
+		embed1.set_footer(text = "| ©  Say'")
+
+@afk.command()
+async def afk_off(self, *, text):
+	author = ctx.message.author.mention
+
+	if not afk:
+		embed2 = discord.Embed(colour = discord.Colour(0xC21C1C))
+		embed2.description = f"{author} n'est plus AFK !"
+		embed2.set_footer(text = "| ©  Say'")
+	else:
+		return
+
 
 
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
