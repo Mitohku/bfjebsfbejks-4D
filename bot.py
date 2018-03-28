@@ -28,16 +28,6 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
-@bot.event
-async def on_message(message):
-    command_name = bot.command_prefix + 'strawpoll'
-    messageContent = message.content
-    if message.content.startswith(command_name):
-        pollURL = await createStrawpoll(messageContent)
-        await message.channel.send(pollURL)
-    else:
-        await bot.process_commands(message)
-
 		
 @bot.command()
 async def test(ctx):
@@ -125,7 +115,7 @@ async def staff(ctx):
 async def radio(ctx):
 	embed = discord.Embed(colour = discord.Colour(0xC21C1C))
 	embed.set_author(name = "FirstStation")
-	embed.description = f"Vous vous ennuyez? Vous voulez juste écouter de la musique? Ecoutez FirstStation en direct!\n\n**__http://firststation.fr/__**"
+	embed.description = f"Vous vous ennuyez? Vous voulez juste écouter de la musique?\nEcoutez FirstStation en direct!\n\n**__http://firststation.fr/__**\n"
 	embed.set_footer(text = "| © FirstStation")
 
 	await ctx.send(embed = embed)
