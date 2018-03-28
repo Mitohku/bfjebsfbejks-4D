@@ -28,47 +28,30 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
-	
-	
-client = discord.Client()
-testmsgid = None
-testmsguser = None
+@bot.command()
+async def quickpoll(ctx, question, *options: str):
+        if len(options) <= 1:
+            await ctx.bot.say('You need more than one option to make a poll!')
+            return
+        if len(options) > 10:
+            await ctx.bot.say('You cannot make a poll for more than 10 things!')
+            return
 
-@client.event
-async def on_ready():
-    print(client.user.name)
-    print("========")
+        if len(options) == 2 and options[0] == 'yes' and options[1] == 'no':
+            reactions = ['✅', '❌']
+        else:
+            reactions = ['1⃣', '2⃣', '3⃣', '4⃣', '5⃣', '6⃣', '7⃣', '8⃣', '9⃣', '🔟']
 
+        description = []
+        for x, option in enumerate(options):
+            description += '\n {} {}'.format(reactions[x], option)
+        embed = discord.Embed(title=question, description=''.join(description))
+        react_message = await ctx.bot.say(embed=embed)
+        for reaction in reactions[:len(options)]:
+            await ctx.bot.add_reaction(react_message, reaction)
+        embed.set_footer(text='Poll ID: {}'.format(react_message.id))
+        await ctx.bot.edit_message(react_message, embed=embed)
 
-@client.event
-async def on_message(message):
-    if message.content.lower().startswith("?ping"):
-        await client.send_message(message.channel, "pong")
-
-    if message.content.lower().startswith("?test"):
-        botmsg = await client.send_message(message.channel, "👍 oder 👎")
-
-        await client.add_reaction(botmsg, "👍")
-        await client.add_reaction(botmsg, "👎")
-
-        global testmsgid
-        testmsgid = botmsg.id
-
-        global testmsguser
-        testmsguser = message.author
-
-@client.event
-async def on_reaction_add(reaction, user):
-    msg = reaction.message
-    chat = reaction.message.channel
-
-    if reaction.emoji == "👍" and msg.id == testmsgid and user == testmsguser:
-        await client.send_message(chat, "Daumen Hoch")
-
-    if reaction.emoji == "👎" and msg.id == testmsgid and user == testmsguser:
-        await client.send_message(chat, "Daumen Runter")
-
-		
 		
 @bot.command()
 async def test(ctx):
