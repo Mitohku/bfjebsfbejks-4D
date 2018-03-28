@@ -122,8 +122,8 @@ async def radio(ctx):
 
 @bot.command(aliases = ['anim', 'animation', 'evenement'])
 async def event(ctx):
-	karaoke = bot.Guild.channels.get(315219359368740875).toString() 
-	imitation = bot.Guild.channels.get(403801761787281409).toString()
+	karaoke = "EVENT IMITATION JENI ASHLEY"
+	imitation = "KARAOKE ALONE-K-REYSS🎶"
 
 	embed = discord.Embed(colour = discord.Colour(0xC21C1C))
 	embed.set_author(name = "PLANIFICATION DES EVENEMENTS") 
