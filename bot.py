@@ -129,8 +129,8 @@ async def event(ctx):
 	embed.set_author(name = "PLANIFICATION DES EVENEMENTS") 
 	embed.description = f"ㅤ"
 	embed.add_field(name="Gaming'Actu", value= f"Samedi 31 Mars, 17h-18h, **(FirstStation)**\n*Animé par **Say' [ Hypesia.net ]***\nㅤ", inline=False)
-	embed.add_field(name="Karaoké", value= f"Tous les Samedis, 21h, **({karaoke})**\n*Animé par **K**, **Reyss**, **Alone***\nㅤ", inline=False)
-	embed.add_field(name="Imitations Vocales", value= f"Dimanche 25 Mars, 21h, **({imitation})**\n*Animé par **J.Ɛ.Ɲ.I.**, **Ashley***", inline=False)
+	embed.add_field(name="Karaoké", value= f"Tous les Samedis, 21h, **({karaoke})**\n*Animé par **Say'**, **tricksterGoddess***\nㅤ", inline=False)
+	embed.add_field(name="Imitations Vocales", value= f"Dimanche 1 Avril, 21h, **({imitation})**\n*Animé par **J.Ɛ.Ɲ.I.**, **Ashley***", inline=False)
 	embed.set_footer(text = "| ©  Say'")
 
 	await ctx.send(embed = embed)
