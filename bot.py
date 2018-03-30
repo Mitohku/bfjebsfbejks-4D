@@ -123,7 +123,7 @@ async def radio(ctx):
 @bot.command(aliases = ['anim', 'animation', 'evenement'])
 async def event(ctx):
 	imitation = "EVENT IMITATION JENI ASHLEY"
-	karaoke = "KARAOKE ALONE-K-REYSS🎶"
+	karaoke = "KARAOKE SAY-TRICKY🎶"
 
 	embed = discord.Embed(colour = discord.Colour(0xC21C1C))
 	embed.set_author(name = "PLANIFICATION DES EVENEMENTS") 
